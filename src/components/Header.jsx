@@ -1,4 +1,5 @@
-export const Header = () => {
+// export const Header = () => {
+export default function Header() {
     return (
         <header>
         <p>header</p>
