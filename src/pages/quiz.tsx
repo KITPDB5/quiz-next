@@ -1,15 +1,10 @@
-import React, { useState, useEffect } from 'react'
+// TODO: Firebaseに問題を登録する
+// TODO: コンポーネントに分けてリファクタリングする
+
+import { useState } from 'react'
 
 export default function CreateQuiz() {
-
   const [answerFormat, setAnswerFormat] = useState('trueOrFalse');
-  useEffect(() => {
-    if (answerFormat === 'trueOrFalse') {
-      // 丸バツを選択したときの処理
-    } else if (answerFormat === 'threeQuestions') {
-      // ３択を選択したときの処理
-    }
-  }, [answerFormat]);
 
   return (
     <div>
@@ -28,7 +23,7 @@ export default function CreateQuiz() {
         </label>
         <label>
           <input type="radio" name="answer_format" value="three_questions" checked={answerFormat === 'threeQuestions'} onChange={() => setAnswerFormat('threeQuestions')} />
-          ３択
+          ３択形式
         </label>
       </div>
 
@@ -36,11 +31,31 @@ export default function CreateQuiz() {
         <p>3. 回答を作成</p>
         {answerFormat === 'trueOrFalse' ? (
           <div>
-            <p>まるばつ</p>
+            <p>正解は</p>
+            <label>
+              <input type="radio" name="answer" value="circle" checked />
+              ○
+            </label>
+            <label>
+              <input type="radio" name="answer" value="cross_mark" />
+              ×
+            </label>
           </div>
         ) : (
           <div>
-            <p>せんたく</p>
+            <p>選択肢の作成と正解を選ぼう</p>
+            <label>
+              <input type="radio" name="answer" value="ans1" checked />
+              1. <input type="text" name="ans1" />
+            </label>
+            <label>
+              <input type="radio" name="answer" value="ans2" />
+              2. <input type="text" name="ans2" />
+            </label>
+            <label>
+              <input type="radio" name="answer" value="ans3" />
+              3. <input type="text" name="ans3" />
+            </label>
           </div>
         )}
       </div>
