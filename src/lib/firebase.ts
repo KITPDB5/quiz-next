@@ -5,13 +5,12 @@ import { initializeApp } from "firebase/app";
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
-  apiKey: "AIzaSyBUKKFzmXA97fSOuqjtI7o_vyNXR65tr7M",
-  authDomain: "pd-quiz-59560.firebaseapp.com",
-  projectId: "pd-quiz-59560",
-  storageBucket: "pd-quiz-59560.appspot.com",
-  messagingSenderId: "459107770615",
-  appId: "1:459107770615:web:aaedd08285494038b573f2"
+  apiKey: process.env.NEXT_PUBLIC_APIKEY,
+  authDomain: process.env.NEXT_PUBLIC_AUTHDOMAIN,
+  projectId: process.env.NEXT_PUBLIC_PROJECTID,
+  storageBucket: process.env.NEXT_PUBLIC_STORAGEBUCKET,
+  messagingSenderId: process.env.NEXT_PUBLIC_MESSAGINGSENDERID,
+  appId: process.env.NEXT_PUBLIC_APPID
 };
-
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
