@@ -1,9 +1,6 @@
-// TODO: Firebaseに問題を登録する
-// TODO: コンポーネントに分けてリファクタリングする
-
 import { useEffect, useState } from 'react'
 import { collection, addDoc } from "firebase/firestore";
-import { app, db } from "@/lib/firebase";
+import { db } from "@/lib/firebase";
 
 export default function CreateQuiz() {
   const [question, setQuestion] = useState('');
@@ -51,7 +48,7 @@ export default function CreateQuiz() {
         answerFormat: answerFormat,
         answer: answer,
         description: desc,
-        choices: [choice1, choice2, choice3]
+        answerChoices: [choice1, choice2, choice3]
       });
       console.log("Document written with ID: ", docRef.id);
     } catch (e) {
@@ -59,23 +56,15 @@ export default function CreateQuiz() {
     }
   }
 
-  // const saveQuizToFirestore = async () => {
-  //   await db.collection('quizzes').add({
-  //     question,
-  //     answerFormat,
-  //     answer
-  //   });
-  // }
-
-  useEffect(() => {
-    console.log(question);
-    console.log(answerFormat);
-    console.log(answer);
-    console.log(desc);
-    console.log(choice1);
-    console.log(choice2);
-    console.log(choice3);
-  }, [question, answerFormat, answer, desc, choice1, choice2, choice3])
+  // useEffect(() => {
+  //   console.log(question);
+  //   console.log(answerFormat);
+  //   console.log(answer);
+  //   console.log(desc);
+  //   console.log(choice1);
+  //   console.log(choice2);
+  //   console.log(choice3);
+  // }, [question, answerFormat, answer, desc, choice1, choice2, choice3])
 
   return (
     <div>
@@ -99,7 +88,7 @@ export default function CreateQuiz() {
       </div>
 
       <div className="part">
-        <p>3. 回答を作成</p>
+        <p>3. 解答を作成</p>
         {answerFormat === 'trueOrFalse' ? (
           <div>
             <p>正解は</p>
@@ -129,12 +118,12 @@ export default function CreateQuiz() {
             </label>
           </div>
         )}
-        <p>解説文を作成</p>
+        <p>4. 解説文を作成</p>
         <input type="text" onChange={handleDescChange} />
       </div>
 
       <div>
-        <button onClick={saveQuizToFirestore}>問題を登録</button>
+        <button onClick={saveQuizToFirestore}>クイズを登録</button>
       </div>
     </div>
   )
