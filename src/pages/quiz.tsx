@@ -5,7 +5,7 @@ import { db } from "@/lib/firebase";
 export default function CreateQuiz() {
   const [question, setQuestion] = useState('');
   const [answerFormat, setAnswerFormat] = useState('trueOrFalse');
-  const [answer, setAnswer] = useState('');
+  const [answer, setAnswer] = useState<boolean | string>(true);
   const [desc, setDesc] = useState('');
   const [choice1, setChoice1] = useState('');
   const [choice2, setChoice2] = useState('');
@@ -41,30 +41,36 @@ export default function CreateQuiz() {
     setChoice3(event.target.value);
   }
 
-  const saveQuizToFirestore = async () => {
-    try {
-      const docRef = await addDoc(collection(db, "quizzes"), {
-        question: question,
-        answerFormat: answerFormat,
-        answer: answer,
-        description: desc,
-        answerChoices: [choice1, choice2, choice3]
-      });
-      console.log("Document written with ID: ", docRef.id);
-    } catch (e) {
-      console.error("Error adding document to Firestore: ", e);
-    }
-  }
+const saveQuizToFirestore = async () => {
+  try {
+    // answerFormatに応じてanswerChoicesのデータを整形
+    const answerChoicesToSave = answerFormat === 'trueOrFalse' ? [true, false] : [choice1, choice2, choice3];
 
-  // useEffect(() => {
-  //   console.log(question);
-  //   console.log(answerFormat);
-  //   console.log(answer);
-  //   console.log(desc);
-  //   console.log(choice1);
-  //   console.log(choice2);
-  //   console.log(choice3);
-  // }, [question, answerFormat, answer, desc, choice1, choice2, choice3])
+    const docRef = await addDoc(collection(db, "quizzes"), {
+      answerFormat: answerFormat,
+      difficulty: "Beginner",
+      question: question,
+      answerChoices: answerChoicesToSave,
+      answer: answer,
+      description: desc,
+      totalAttempts: 0,
+      correctAttempts: 0
+    });
+    console.log("Document written with ID: ", docRef.id);
+  } catch (e) {
+    console.error("Error adding document to Firestore: ", e);
+  }
+}
+
+  useEffect(() => {
+    console.log(question);
+    console.log(answerFormat);
+    console.log(answer);
+    console.log(desc);
+    console.log(choice1);
+    console.log(choice2);
+    console.log(choice3);
+  }, [question, answerFormat, answer, desc, choice1, choice2, choice3])
 
   return (
     <div>
@@ -78,12 +84,30 @@ export default function CreateQuiz() {
       <div className="part">
         <p>2. 回答形式を選択</p>
         <label>
-          <input type="radio" name="answer_format" value="trueOrFalse" checked={answerFormat === 'trueOrFalse'} onChange={handleAnswerFormatChange} />
+        <input
+          type="radio"
+          name="answer_format"
+          value="trueOrFalse"
+          checked={answerFormat === 'trueOrFalse'}
+          onChange={(event) => {
+            handleAnswerFormatChange(event);
+            setAnswer(true);
+          }}
+        />
           ○×形式
         </label>
         <label>
-          <input type="radio" name="answer_format" value="threeQuestions" checked={answerFormat === 'threeQuestions'} onChange={handleAnswerFormatChange} />
-          ３択形式
+        <input
+          type="radio"
+          name="answer_format"
+          value="threeQuestions"
+          checked={answerFormat === 'threeQuestions'}
+          onChange={(event) => {
+            handleAnswerFormatChange(event);
+            setAnswer('A');
+          }}
+        />
+        ３択形式
         </label>
       </div>
 
@@ -93,11 +117,11 @@ export default function CreateQuiz() {
           <div>
             <p>正解は</p>
             <label>
-              <input type="radio" name="answer" value="true" checked onChange={handleAnswerChange} />
+              <input type="radio" name="answer" value="true" checked={answer === true} onChange={handleAnswerChange} />
               ○
             </label>
             <label>
-              <input type="radio" name="answer" value="false" onChange={handleAnswerChange} />
+              <input type="radio" name="answer" value="false" checked={answer === false} onChange={handleAnswerChange} />
               ×
             </label>
           </div>
@@ -106,15 +130,15 @@ export default function CreateQuiz() {
             <p>選択肢の作成と正解を選ぼう</p>
             <label>
               <input type="radio" name="answer" value="A" checked onChange={handleAnswerChange} />
-              1. <input type="text" name="choise1" onChange={handleChoice1Change} />
+              A. <input type="text" name="choise1" onChange={handleChoice1Change} />
             </label>
             <label>
               <input type="radio" name="answer" value="B" onChange={handleAnswerChange} />
-              2. <input type="text" name="choice2" onChange={handleChoice2Change} />
+              B. <input type="text" name="choice2" onChange={handleChoice2Change} />
             </label>
             <label>
               <input type="radio" name="answer" value="C" onChange={handleAnswerChange} />
-              3. <input type="text" name="choice3" onChange={handleChoice3Change} />
+              C. <input type="text" name="choice3" onChange={handleChoice3Change} />
             </label>
           </div>
         )}
