@@ -1,8 +1,11 @@
-// export const Header = () => {
+import Link from "next/link";
+
 export default function Header() {
     return (
         <header>
-        <p>header</p>
+            <Link href="/">
+                header(ホームに戻る)
+            </Link>
         </header>
     );
 }
