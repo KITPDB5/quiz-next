@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react'
 import { collection, addDoc } from "firebase/firestore";
 import { db } from "@/lib/firebase";
+import styles from "@/styles/quiz.module.css"
 
 export default function CreateQuiz() {
   const [question, setQuestion] = useState('');
@@ -73,7 +74,7 @@ const saveQuizToFirestore = async () => {
   // }, [question, answerFormat, answer, desc, choice1, choice2, choice3])
 
   return (
-    <div>
+    <div className={styles.container}>
       <p>create quiz</p>
 
       <div className="part">
