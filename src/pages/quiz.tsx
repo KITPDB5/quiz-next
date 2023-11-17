@@ -62,15 +62,15 @@ const saveQuizToFirestore = async () => {
   }
 }
 
-  useEffect(() => {
-    console.log(question);
-    console.log(answerFormat);
-    console.log(answer);
-    console.log(desc);
-    console.log(choice1);
-    console.log(choice2);
-    console.log(choice3);
-  }, [question, answerFormat, answer, desc, choice1, choice2, choice3])
+  // useEffect(() => {
+  //   console.log(question);
+  //   console.log(answerFormat);
+  //   console.log(answer);
+  //   console.log(desc);
+  //   console.log(choice1);
+  //   console.log(choice2);
+  //   console.log(choice3);
+  // }, [question, answerFormat, answer, desc, choice1, choice2, choice3])
 
   return (
     <div>
