@@ -23,7 +23,8 @@ export default function CreateQuiz() {
   }
 
   const handleAnswerChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setAnswer(event.target.value);
+    const value = event.target.value;
+    setAnswer(value === 'true' ? true : value === 'false' ? false : value);
   }
 
   const handleDescChange = (event: React.ChangeEvent<HTMLInputElement>) => {
