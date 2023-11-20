@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react'
 import { collection, addDoc } from "firebase/firestore";
 import { db } from "@/lib/firebase";
+import styles from "@/styles/quiz.module.css"
 
 export default function CreateQuiz() {
   const [question, setQuestion] = useState('');
@@ -22,7 +23,8 @@ export default function CreateQuiz() {
   }
 
   const handleAnswerChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setAnswer(event.target.value);
+    const value = event.target.value;
+    setAnswer(value === 'true' ? true : value === 'false' ? false : value);
   }
 
   const handleDescChange = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -73,7 +75,7 @@ const saveQuizToFirestore = async () => {
   // }, [question, answerFormat, answer, desc, choice1, choice2, choice3])
 
   return (
-    <div>
+    <div className={styles.container}>
       <p>create quiz</p>
 
       <div className="part">
@@ -129,15 +131,15 @@ const saveQuizToFirestore = async () => {
           <div>
             <p>選択肢の作成と正解を選ぼう</p>
             <label>
-              <input type="radio" name="answer" value="A" checked onChange={handleAnswerChange} />
+              <input type="radio" name="answer" value="A" checked={answer === 'A'} onChange={handleAnswerChange} />
               A. <input type="text" name="choise1" onChange={handleChoice1Change} />
             </label>
             <label>
-              <input type="radio" name="answer" value="B" onChange={handleAnswerChange} />
+              <input type="radio" name="answer" value="B" checked={answer === 'B'} onChange={handleAnswerChange} />
               B. <input type="text" name="choice2" onChange={handleChoice2Change} />
             </label>
             <label>
-              <input type="radio" name="answer" value="C" onChange={handleAnswerChange} />
+              <input type="radio" name="answer" value="C" checked={answer === 'C'} onChange={handleAnswerChange} />
               C. <input type="text" name="choice3" onChange={handleChoice3Change} />
             </label>
           </div>
