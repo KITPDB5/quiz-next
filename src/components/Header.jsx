@@ -4,7 +4,7 @@ export default function Header() {
     return (
         <header>
             <Link href="/">
-                header(ホームに戻る)
+                {/* header(ホームに戻る) */}
             </Link>
         </header>
     );

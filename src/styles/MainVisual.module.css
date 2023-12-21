@@ -1,0 +1,88 @@
+/* MainVisual.module.css */
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  padding: 50px 80px;
+  /* background: linear-gradient(to bottom, #fee7a1, #fff0a7); */
+}
+
+.mainVisualContainer {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  height: calc(100vh - 100px);
+  border-radius: 40px;
+  width: 100%;
+  background: linear-gradient(to bottom, #F9BE0D, #FAD720);
+}
+
+.rightContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding-top: 70px;
+  /* background-color: red; */
+}
+
+.leftContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  /* align-items: center; */
+  /* justify-content: center; */
+  padding: 20px;
+}
+
+
+.subtext {
+  font-size: 25px;
+  font-weight: 600;
+
+  padding: 25px 40px;
+
+  margin-bottom: 20px;
+
+  border-radius: 10px;
+  box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+
+  background-color: white;
+}
+
+.headline {
+  font-size: 40px;
+  font-weight: 700;
+
+  padding: 25px 40px;
+
+  margin-bottom: 80px;
+
+  border-radius: 10px;
+  box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+
+  background-color: white;
+}
+
+.logo {
+  align-self: flex-start;
+  padding-left: 20px;
+}
+
+.button {
+  background-color: #232323;
+  color: white;
+
+  font-size: 19px;
+  font-weight: bold;
+
+  padding: 27px 60px;
+  margin-left: 10px;
+
+  border: 3.5px solid white;
+  border-radius: 50px;
+  cursor: pointer;
+}

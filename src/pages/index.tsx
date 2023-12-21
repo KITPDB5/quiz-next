@@ -1,9 +1,11 @@
+import MainVisual from "@/components/MainVisual";
 import Link from "next/link";
 
 export default function Home() {
   return (
     <div>
-      <p>Home</p>
+      <MainVisual />
+
       <Link href="/quiz">
         クイズを作成する
       </Link>
