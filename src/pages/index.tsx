@@ -1,5 +1,6 @@
 import AboutSmaQ from "@/components/AboutSmaQ";
 import MainVisual from "@/components/MainVisual";
+import SmaQFeatures from "@/components/SmaQFeatures";
 import Link from "next/link";
 
 export default function Home() {
@@ -7,6 +8,7 @@ export default function Home() {
     <div>
       <MainVisual />
       <AboutSmaQ />
+      <SmaQFeatures />
       <Link href="/quiz">
         クイズを作成する
       </Link>
