@@ -11,10 +11,10 @@ const firebaseConfig = {
   projectId: process.env.NEXT_PUBLIC_PROJECTID,
   storageBucket: process.env.NEXT_PUBLIC_STORAGEBUCKET,
   messagingSenderId: process.env.NEXT_PUBLIC_MESSAGINGSENDERID,
-  appId: process.env.NEXT_PUBLIC_APPID
+  appId: process.env.NEXT_PUBLIC_APPID,
 };
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
 
-export {app, db};
+export { app, db };
