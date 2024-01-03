@@ -5,7 +5,7 @@ import Link from "next/link";
 const SmaQFeatures: React.FC = () => {
   return (
     <div className={styles.container}>
-      <p>SmaQでできること</p>
+      <p className={styles.title}>SmaQでできること</p>
       <div className={styles.SmaQFeaturesContainer}>
         <div className={styles.bannerWrapper}>
           <p>スマホの使い方・知識について、</p>
