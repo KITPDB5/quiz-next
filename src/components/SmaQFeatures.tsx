@@ -4,10 +4,10 @@ import Link from "next/link";
 
 const SmaQFeatures: React.FC = () => {
   return (
-    <div className="container">
+    <div className={styles.container}>
       <p>SmaQでできること</p>
       <div className={styles.SmaQFeaturesContainer}>
-        <div className="bannerWrapper">
+        <div className={styles.bannerWrapper}>
           <p>スマホの使い方・知識について、</p>
           <p>クイズで楽しくマスター</p>
         </div>
@@ -19,7 +19,7 @@ const SmaQFeatures: React.FC = () => {
           className={styles.aboutImage}
         />
 
-        <div className="features">
+        <div className={styles.features}>
           <div className={styles.feature}>
             難易度別で
             <br />
