@@ -20,7 +20,7 @@ const AboutSmaQ: React.FC = () => {
           <br />
           この問題を解決する架け橋になる
           <br />
-          スマホクイズアプリ。
+          スマホクイズアプリ「 SmaQ 」
         </p>
       </div>
 
