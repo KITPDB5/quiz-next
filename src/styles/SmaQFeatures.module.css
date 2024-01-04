@@ -1,0 +1,136 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  width: 100%;
+}
+
+.SmaQFeaturesContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  position: relative;
+  overflow: hidden;
+
+  width: 75%;
+
+  border-radius: 2.5rem;
+
+  background: linear-gradient(to bottom, #f9be0d, #fad720);
+}
+
+.title {
+  font-size: 1.5rem;
+  font-weight: 800;
+
+  margin-bottom: 2.5rem;
+  position: relative;
+  padding: 0 1rem;
+
+  background-color: white;
+  display: inline-block;
+}
+
+.title::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+
+  transform: translate(-50%, -50%);
+  background-color: #37311C;
+
+  height: 2px;
+  width: calc(100vw - 50%);
+
+  z-index: -1;
+}
+
+.bannerWrapper {
+  margin-right: auto;
+  margin-top: 3rem;
+}
+
+.bannerText {
+  display: inline-block;
+
+  font-size: 1.3rem;
+  font-weight: 600;
+
+  padding: 1.3rem 2.8rem;
+  margin-top: 0.8rem;
+
+  border-radius: 0 0.5rem 0.5rem 0;
+
+  color: white;
+  background-color: #37311C;
+}
+
+.imageMock2 {
+  position: absolute;
+  top: 5rem;
+  right: -1.5rem;
+}
+
+.features {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  flex-wrap: wrap;
+
+  margin-top: 16rem;
+
+  width: 100%;
+  gap: 2rem;
+}
+
+.feature {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+
+  background: white;
+
+  height: 17vw;
+  width: 17vw;
+  border-radius: 50rem;
+  box-shadow: 2px 6px 20px 0px rgba(0, 0, 0, 0.2);
+}
+
+.feature p {
+  font-weight: 600;
+}
+
+.button {
+  background-color: #37311C;
+  color: white;
+
+  font-weight: bold;
+
+  padding: 1.3rem 3.3rem;
+  margin-left: 1rem;
+
+  margin: 4rem 0 3rem;
+
+  border: 0.2rem solid white;
+  border-radius: 10rem;
+  cursor: pointer;
+
+  box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+}
+
+.button:hover {
+  opacity: 0.8;
+  transition: 0.3s;
+}
+
+.button:active {
+  transform: translateY(4px);
+  box-shadow: none;
+}

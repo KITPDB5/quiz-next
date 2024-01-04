@@ -1,12 +1,18 @@
-import Link from "next/link";
+import AboutSmaQ from '@/components/AboutSmaQ'
+import CallToActtion from '@/components/CallToAction'
+import Footer from '@/components/Footer'
+import MainVisual from '@/components/MainVisual'
+import SmaQFeatures from '@/components/SmaQFeatures'
 
 export default function Home() {
   return (
-    <div>
-      <p>Home</p>
-      <Link href="/quiz">
-        クイズを作成する
-      </Link>
-    </div>
+    <>
+      <MainVisual />
+      <AboutSmaQ />
+      <SmaQFeatures />
+      <CallToActtion />
+
+      <Footer />
+    </>
   )
 }

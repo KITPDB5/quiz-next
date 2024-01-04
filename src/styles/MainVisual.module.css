@@ -1,0 +1,102 @@
+/* MainVisual.module.css */
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  padding: 2rem 3rem;
+  /* background-color: red; */
+}
+
+.mainVisualContainer {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  height: calc(100vh - 100px);
+  border-radius: 40px;
+
+  width: 100%;
+  background: linear-gradient(to bottom, #f9be0d, #fad720);
+}
+
+.rightContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding-top: 3rem;
+  padding-left: 3rem;
+}
+
+@media (max-width: 700px) {
+  .rightContainer {
+    padding-left: 0;
+  }
+}
+
+.leftContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.subtext {
+  font-size: 1.3rem;
+  font-weight: 600;
+
+  padding: 1rem 2rem;
+
+  margin-bottom: 0.8rem;
+
+  border-radius: 0.5rem;
+  box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+
+  background-color: white;
+}
+
+.headline {
+  font-size: 2rem;
+  font-weight: 700;
+
+  padding: 1rem 2rem;
+
+  margin-bottom: 3rem;
+
+  border-radius: 0.5rem;
+  box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+
+  background-color: white;
+}
+
+.logo {
+  align-self: flex-start;
+  padding-left: 0.5rem;
+}
+
+.button {
+  background-color: #37311C;
+  color: white;
+
+  font-weight: bold;
+
+  padding: 1.3rem 3.3rem;
+  margin-left: 1rem;
+
+  border: 0.2rem solid white;
+  border-radius: 10rem;
+  cursor: pointer;
+
+  box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+}
+
+.button:hover {
+  opacity: 0.8;
+  transition: 0.3s;
+}
+
+.button:active {
+  transform: translateY(4px);
+  box-shadow: none;
+}

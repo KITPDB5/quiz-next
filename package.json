@@ -6,7 +6,8 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "format": "prettier --write \"./src/**/*.{ts,tsx}\""
   },
   "dependencies": {
     "@firebase/firestore": "^4.3.2",
@@ -21,6 +22,7 @@
     "@types/react-dom": "^18",
     "autoprefixer": "^10",
     "postcss": "^8",
+    "prettier": "^3.1.1",
     "tailwindcss": "^3",
     "typescript": "^5"
   }
