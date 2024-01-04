@@ -9,7 +9,6 @@ export default function Home() {
       <MainVisual />
       <AboutSmaQ />
       <SmaQFeatures />
-      <Link href="/quiz">クイズを作成する</Link>
     </div>
   );
 }

@@ -6,11 +6,13 @@ const SmaQFeatures: React.FC = () => {
   return (
     <div className={styles.container}>
       <p className={styles.title}>SmaQでできること</p>
+
       <div className={styles.SmaQFeaturesContainer}>
         <div className={styles.bannerWrapper}>
-          <p>スマホの使い方・知識について、</p>
-          <p>クイズで楽しくマスター</p>
+          <p className={styles.bannerText}>スマホの使い方・知識について、</p><br />
+          <p className={styles.bannerText}>クイズで楽しくマスター</p>
         </div>
+
         <Image
           src="/mock2.png"
           alt="mock2"
