@@ -23,18 +23,16 @@ const SmaQFeatures: React.FC = () => {
 
         <div className={styles.features}>
           <div className={styles.feature}>
-            難易度別で
-            <br />
-            選べるクイズ
+            <p>難易度別で</p>
+            <p>選べるクイズ</p>
           </div>
           <div className={styles.feature}>
-            <p>
-              回答はワンタップで
-              <br />
-              サクサク学習
-            </p>
+            <p>回答はワンタップで</p>
+            <p>サクサク学習</p>
           </div>
-          <div className={styles.feature}>丁寧な解説つき</div>
+          <div className={styles.feature}>
+            <p>丁寧な解説つき</p>
+          </div>
         </div>
 
         <Link href="/quiz" className={styles.button}>
