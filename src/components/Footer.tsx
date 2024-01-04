@@ -1,12 +1,16 @@
 import Image from 'next/image'
 import styles from '@/styles/Footer.module.css'
-import Link from 'next/link'
 
 const Footer: React.FC = () => {
   return (
-    <div>
-      <></>
-        <></>
+    <div className={styles.container}>
+      <Image
+        src="/logo.png"
+        alt="logo"
+        width={150}
+        height={200}
+        className={styles.logo}
+      />
     </div>
   )
 }
