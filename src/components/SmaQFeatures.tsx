@@ -18,7 +18,7 @@ const SmaQFeatures: React.FC = () => {
           alt="mock2"
           width={800}
           height={1000}
-          className={styles.aboutImage}
+          className={styles.imageMock2}
         />
 
         <div className={styles.features}>

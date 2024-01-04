@@ -13,6 +13,9 @@
   align-items: center;
   justify-content: center;
 
+  position: relative;
+  overflow: hidden;
+
   width: 75%;
 
   border-radius: 2.5rem;
@@ -55,10 +58,10 @@
 .bannerText {
   display: inline-block;
 
-  font-size: 1.1rem;
+  font-size: 1.3rem;
   font-weight: 600;
 
-  padding: 1.2rem 2.5rem;
+  padding: 1.3rem 2.8rem;
   margin-top: 0.8rem;
 
   border-radius: 0 0.5rem 0.5rem 0;
@@ -67,11 +70,21 @@
   background-color: #37311C;
 }
 
+.imageMock2 {
+  position: absolute;
+  top: 5rem;
+  right: -1.5rem;
+}
+
 .features {
   display: flex;
   justify-content: center;
   align-items: center;
+
   flex-wrap: wrap;
+
+  margin-top: 16rem;
+
   width: 100%;
   gap: 2rem;
 }
