@@ -1,6 +1,6 @@
-import Image from "next/image";
-import styles from "@/styles/MainVisual.module.css";
-import Link from "next/link";
+import Image from 'next/image'
+import styles from '@/styles/MainVisual.module.css'
+import Link from 'next/link'
 
 const MainVisual: React.FC = () => {
   return (
@@ -33,7 +33,7 @@ const MainVisual: React.FC = () => {
         </div>
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default MainVisual;
+export default MainVisual

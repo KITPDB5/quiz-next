@@ -1,5 +1,5 @@
-import Image from "next/image";
-import styles from "@/styles/AboutSmaQ.module.css";
+import Image from 'next/image'
+import styles from '@/styles/AboutSmaQ.module.css'
 
 const AboutSmaQ: React.FC = () => {
   return (
@@ -34,7 +34,7 @@ const AboutSmaQ: React.FC = () => {
         />
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default AboutSmaQ;
+export default AboutSmaQ

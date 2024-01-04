@@ -1,73 +1,73 @@
-import { useEffect, useState } from "react";
-import { collection, addDoc } from "firebase/firestore";
-import { db } from "@/lib/firebase";
-import styles from "@/styles/quiz.module.css";
+import { useEffect, useState } from 'react'
+import { collection, addDoc } from 'firebase/firestore'
+import { db } from '@/lib/firebase'
+import styles from '@/styles/quiz.module.css'
 
 export default function CreateQuiz() {
-  const [question, setQuestion] = useState("");
-  const [answerFormat, setAnswerFormat] = useState("trueOrFalse");
-  const [answer, setAnswer] = useState<boolean | string>(true);
-  const [desc, setDesc] = useState("");
-  const [choice1, setChoice1] = useState("");
-  const [choice2, setChoice2] = useState("");
-  const [choice3, setChoice3] = useState("");
+  const [question, setQuestion] = useState('')
+  const [answerFormat, setAnswerFormat] = useState('trueOrFalse')
+  const [answer, setAnswer] = useState<boolean | string>(true)
+  const [desc, setDesc] = useState('')
+  const [choice1, setChoice1] = useState('')
+  const [choice2, setChoice2] = useState('')
+  const [choice3, setChoice3] = useState('')
 
   const handleQuestionChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setQuestion(event.target.value);
-  };
+    setQuestion(event.target.value)
+  }
 
   const handleAnswerFormatChange = (
     event: React.ChangeEvent<HTMLInputElement>,
   ) => {
     if (event.target.checked) {
-      setAnswerFormat(event.target.value);
+      setAnswerFormat(event.target.value)
     }
-  };
+  }
 
   const handleAnswerChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    const value = event.target.value;
-    setAnswer(value === "true" ? true : value === "false" ? false : value);
-  };
+    const value = event.target.value
+    setAnswer(value === 'true' ? true : value === 'false' ? false : value)
+  }
 
   const handleDescChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setDesc(event.target.value);
-  };
+    setDesc(event.target.value)
+  }
 
   const handleChoice1Change = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setChoice1(event.target.value);
-  };
+    setChoice1(event.target.value)
+  }
 
   const handleChoice2Change = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setChoice2(event.target.value);
-  };
+    setChoice2(event.target.value)
+  }
 
   const handleChoice3Change = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setChoice3(event.target.value);
-  };
+    setChoice3(event.target.value)
+  }
 
   const saveQuizToFirestore = async () => {
     try {
       // answerFormatに応じてanswerChoicesのデータを整形
       const answerChoicesToSave =
-        answerFormat === "trueOrFalse"
+        answerFormat === 'trueOrFalse'
           ? [true, false]
-          : [choice1, choice2, choice3];
+          : [choice1, choice2, choice3]
 
-      const docRef = await addDoc(collection(db, "quizzes"), {
+      const docRef = await addDoc(collection(db, 'quizzes'), {
         answerFormat: answerFormat,
-        difficulty: "Beginner",
+        difficulty: 'Beginner',
         question: question,
         answerChoices: answerChoicesToSave,
         answer: answer,
         description: desc,
         totalAttempts: 0,
         correctAttempts: 0,
-      });
-      console.log("Document written with ID: ", docRef.id);
+      })
+      console.log('Document written with ID: ', docRef.id)
     } catch (e) {
-      console.error("Error adding document to Firestore: ", e);
+      console.error('Error adding document to Firestore: ', e)
     }
-  };
+  }
 
   // useEffect(() => {
   //   console.log(question);
@@ -95,10 +95,10 @@ export default function CreateQuiz() {
             type="radio"
             name="answer_format"
             value="trueOrFalse"
-            checked={answerFormat === "trueOrFalse"}
-            onChange={(event) => {
-              handleAnswerFormatChange(event);
-              setAnswer(true);
+            checked={answerFormat === 'trueOrFalse'}
+            onChange={event => {
+              handleAnswerFormatChange(event)
+              setAnswer(true)
             }}
           />
           ○×形式
@@ -108,10 +108,10 @@ export default function CreateQuiz() {
             type="radio"
             name="answer_format"
             value="threeQuestions"
-            checked={answerFormat === "threeQuestions"}
-            onChange={(event) => {
-              handleAnswerFormatChange(event);
-              setAnswer("A");
+            checked={answerFormat === 'threeQuestions'}
+            onChange={event => {
+              handleAnswerFormatChange(event)
+              setAnswer('A')
             }}
           />
           ３択形式
@@ -120,7 +120,7 @@ export default function CreateQuiz() {
 
       <div className="part">
         <p>3. 解答を作成</p>
-        {answerFormat === "trueOrFalse" ? (
+        {answerFormat === 'trueOrFalse' ? (
           <div>
             <p>正解は</p>
             <label>
@@ -152,10 +152,10 @@ export default function CreateQuiz() {
                 type="radio"
                 name="answer"
                 value="A"
-                checked={answer === "A"}
+                checked={answer === 'A'}
                 onChange={handleAnswerChange}
               />
-              A.{" "}
+              A.{' '}
               <input
                 type="text"
                 name="choise1"
@@ -167,10 +167,10 @@ export default function CreateQuiz() {
                 type="radio"
                 name="answer"
                 value="B"
-                checked={answer === "B"}
+                checked={answer === 'B'}
                 onChange={handleAnswerChange}
               />
-              B.{" "}
+              B.{' '}
               <input
                 type="text"
                 name="choice2"
@@ -182,10 +182,10 @@ export default function CreateQuiz() {
                 type="radio"
                 name="answer"
                 value="C"
-                checked={answer === "C"}
+                checked={answer === 'C'}
                 onChange={handleAnswerChange}
               />
-              C.{" "}
+              C.{' '}
               <input
                 type="text"
                 name="choice3"
@@ -202,5 +202,5 @@ export default function CreateQuiz() {
         <button onClick={saveQuizToFirestore}>クイズを登録</button>
       </div>
     </div>
-  );
+  )
 }

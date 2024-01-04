@@ -1,6 +1,6 @@
-import Image from "next/image";
-import styles from "@/styles/SmaQFeatures.module.css";
-import Link from "next/link";
+import Image from 'next/image'
+import styles from '@/styles/SmaQFeatures.module.css'
+import Link from 'next/link'
 
 const SmaQFeatures: React.FC = () => {
   return (
@@ -9,7 +9,8 @@ const SmaQFeatures: React.FC = () => {
 
       <div className={styles.SmaQFeaturesContainer}>
         <div className={styles.bannerWrapper}>
-          <p className={styles.bannerText}>スマホの使い方・知識について、</p><br />
+          <p className={styles.bannerText}>スマホの使い方・知識について、</p>
+          <br />
           <p className={styles.bannerText}>クイズで楽しくマスター</p>
         </div>
 
@@ -40,7 +41,7 @@ const SmaQFeatures: React.FC = () => {
         </Link>
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default SmaQFeatures;
+export default SmaQFeatures
