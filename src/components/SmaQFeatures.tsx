@@ -36,9 +36,9 @@ const SmaQFeatures: React.FC = () => {
           </div>
         </div>
 
-        <Link href="/quiz" className={styles.button}>
+        <p className={styles.button}>
           アプリをインストール
-        </Link>
+        </p>
       </div>
     </div>
   )
