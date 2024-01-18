@@ -12,6 +12,9 @@ export default function CreateQuiz() {
   const [choice2, setChoice2] = useState('')
   const [choice3, setChoice3] = useState('')
 
+  const [savedQuiz, setSavedQuiz] = useState<QuizData | null>(null)
+  const [showMessage, setShowMessage] = useState(false)
+
   const handleQuestionChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setQuestion(event.target.value)
   }
@@ -45,6 +48,17 @@ export default function CreateQuiz() {
     setChoice3(event.target.value)
   }
 
+  type QuizData = {
+    answerFormat: string;
+    difficulty: string;
+    question: string;
+    answerChoices: boolean[] | string[];
+    answer: string | boolean;
+    description: string;
+    totalAttempts: number;
+    correctAttempts: number;
+  }
+
   const saveQuizToFirestore = async () => {
     try {
       // answerFormatに応じてanswerChoicesのデータを整形
@@ -53,21 +67,27 @@ export default function CreateQuiz() {
           ? [true, false]
           : [choice1, choice2, choice3]
 
-      const docRef = await addDoc(collection(db, 'quizzes'), {
-        answerFormat: answerFormat,
-        difficulty: 'Beginner',
-        question: question,
-        answerChoices: answerChoicesToSave,
-        answer: answer,
-        description: desc,
-        totalAttempts: 0,
-        correctAttempts: 0,
-      })
-      console.log('Document written with ID: ', docRef.id)
+    const quizData = {
+      answerFormat: answerFormat,
+      difficulty: 'Beginner',
+      question: question,
+      answerChoices: answerChoicesToSave,
+      answer: answer,
+      description: desc,
+      totalAttempts: 0,
+      correctAttempts: 0,
+    }
+
+    const docRef = await addDoc(collection(db, 'quizzes'), quizData)
+    console.log('Document written with ID: ', docRef.id)
+
+    setSavedQuiz(quizData)
     } catch (e) {
       console.error('Error adding document to Firestore: ', e)
     }
-  }
+    // データ保存成功時にメッセージ表示用のstateを更新
+      setShowMessage(true)
+    }
 
   // useEffect(() => {
   //   console.log(question);
@@ -201,6 +221,13 @@ export default function CreateQuiz() {
       <div>
         <button onClick={saveQuizToFirestore}>クイズを登録</button>
       </div>
+
+      {savedQuiz && (
+    <div style={{ position: 'fixed', top: '50%', left: '50%', transform: 'translate(-50%, -50%)' }}>
+      <p>クイズを登録しました！</p>
+      <pre>{JSON.stringify(savedQuiz, null, 2)}</pre>
+        </div>
+      )}
     </div>
   )
 }
