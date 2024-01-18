@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import { useState } from 'react'
 import { collection, addDoc } from 'firebase/firestore'
 import { db } from '@/lib/firebase'
 import styles from '@/styles/Quiz.module.css'
@@ -88,16 +88,6 @@ export default function CreateQuiz() {
     // データ保存成功時にメッセージ表示用のstateを更新
       setShowMessage(true)
     }
-
-  // useEffect(() => {
-  //   console.log(question);
-  //   console.log(answerFormat);
-  //   console.log(answer);
-  //   console.log(desc);
-  //   console.log(choice1);
-  //   console.log(choice2);
-  //   console.log(choice3);
-  // }, [question, answerFormat, answer, desc, choice1, choice2, choice3])
 
   return (
     <div className={styles.container}>
