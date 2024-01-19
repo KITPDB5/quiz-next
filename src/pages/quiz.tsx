@@ -17,7 +17,7 @@ export default function CreateQuiz() {
   const [savedQuiz, setSavedQuiz] = useState<QuizData | null>(null)
   // const [showMessage, setShowMessage] = useState(false)
 
-  const handleQuestionChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+  const handleQuestionChange = (event: React.ChangeEvent<HTMLTextAreaElement>) => {
     setQuestion(event.target.value)
   }
 
@@ -34,7 +34,7 @@ export default function CreateQuiz() {
     setAnswer(value === 'true' ? true : value === 'false' ? false : value)
   }
 
-  const handleDescChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+  const handleDescChange = (event: React.ChangeEvent<HTMLTextAreaElement>) => {
     setDesc(event.target.value)
   }
 
@@ -101,7 +101,6 @@ export default function CreateQuiz() {
         <div className={styles.part}>
           <h1>1. 問題文を作成</h1>
           <textarea
-            type="text"
             onChange={handleQuestionChange}
             className={styles.inputContainer}
             placeholder="テキストを入力"
@@ -226,7 +225,6 @@ export default function CreateQuiz() {
           <div className={styles.part}>
             <h1>4. 解説文を作成</h1>
             <textarea
-              type="text"
               onChange={handleDescChange}
               className={styles.inputContainer}
               placeholder="テキストを入力"
