@@ -3,7 +3,133 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  min-height: 100vh;
-  padding: 30px 20px;
+
+  padding: 2rem 3rem;
+  width: 100%;
+}
+
+.logo {
+  align-self: flex-start;
+  padding-left: 0.5rem;
+}
+
+.createQuizContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  width: 100%;
+
+  padding: 5rem;
+
+  border-radius: 40px;
   background: linear-gradient(to bottom, #f9be0d, #fad720);
+}
+
+.createQuizContainer .part {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  width: 70%;
+
+  padding: 1.5rem 0;
+}
+
+.createQuizContainer h1 {
+  font-size: 1.3rem;
+  font-weight: bold;
+
+  padding-bottom: 0.3rem;
+}
+
+.smallInputContainer {
+  width: 25vw;
+
+  padding: 0.5rem 1rem;
+
+  font-size: 0.8rem;
+
+  background-color: white;
+  border-radius: 0.75rem;
+  box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+}
+
+.inputContainer {
+  height: 5rem;
+  width: 30vw;
+
+  border-radius: 0.75rem;
+  padding: 1rem;
+
+  font-size: 0.8rem;
+
+  box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+  background-color: white;
+}
+
+/* ----- quizConfirmationContainer ----- */
+
+.quizConfirmationContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+
+  width: 50%;
+
+  padding: 3rem 5rem;
+
+  border-radius: 2.5rem;
+  background-color: white;
+  box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+}
+
+.quizConfirmationContainer h1 {
+  font-size: 1.2rem;
+  font-weight: bold;
+  margin: 1rem;
+}
+
+.quizConfirmationContainer p{
+  color: rgb(85, 85, 85);
+}
+
+.linkText {
+  font-size: 0.8rem;
+  color: rgb(85, 85, 85);
+  text-decoration: underline;
+}
+
+.button {
+  background-color: #37311C;
+  color: white;
+
+  font-weight: bold;
+
+  padding: 1.1rem 3.3rem;
+  margin: 1rem 0 0.5rem;
+
+  border: 0.2rem solid white;
+  border-radius: 10rem;
+  cursor: pointer;
+
+  box-shadow: 0px 3px 3px 0px rgba(0, 0, 0, 0.25);
+}
+
+.button:hover {
+  opacity: 0.8;
+  transition: 0.3s;
+}
+
+.button:active {
+  transform: translateY(4px);
+  box-shadow: none;
 }
