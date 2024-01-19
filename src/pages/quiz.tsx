@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import { collection, addDoc } from 'firebase/firestore'
 import { db } from '@/lib/firebase'
-import styles from '@/styles/Quiz.module.css'
+import styles from '@/styles/quiz.module.css'
 import Image from 'next/image'
 import Link from 'next/link'
 
