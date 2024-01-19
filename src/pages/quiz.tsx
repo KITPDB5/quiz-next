@@ -2,6 +2,8 @@ import { useState } from 'react'
 import { collection, addDoc } from 'firebase/firestore'
 import { db } from '@/lib/firebase'
 import styles from '@/styles/Quiz.module.css'
+import Image from 'next/image'
+import Link from 'next/link'
 
 export default function CreateQuiz() {
   const [question, setQuestion] = useState('')
@@ -211,16 +213,9 @@ export default function CreateQuiz() {
       </div>
 
       {savedQuiz && (
-        <div
-          style={{
-            position: 'fixed',
-            top: '50%',
-            left: '50%',
-            transform: 'translate(-50%, -50%)',
-            background: 'white',
-          }}
-        >
-          <p>クイズを登録しました！</p>
+        <div className={styles.quizConfirmationContainer}>
+          <Image src="/cracker.png" alt="cracker" width={80} height={80} />
+          <h1>クイズを登録しました！</h1>
           <p>問題: {savedQuiz.question}</p>
           <p>
             回答形式:{' '}
@@ -254,6 +249,11 @@ export default function CreateQuiz() {
               : savedQuiz.answer}
           </p>
           <p>解説: {savedQuiz.description}</p>
+
+          <a href="/quiz" className={styles.button}>
+            もう一問作成する
+          </a>
+          <Link href="/" className={styles.linkText}>トップにもどる</Link>
         </div>
       )}
     </div>
