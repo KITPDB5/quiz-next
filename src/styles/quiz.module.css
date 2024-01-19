@@ -4,11 +4,13 @@
   justify-content: center;
   align-items: center;
 
-  padding: 3rem 0 6rem;
-  min-height: 100vh;
+  padding: 2rem 3rem;
   width: 100%;
+}
 
-  background: linear-gradient(to bottom, #f9be0d, #fad720);
+.logo {
+  align-self: flex-start;
+  padding-left: 0.5rem;
 }
 
 .createQuizContainer {
@@ -16,8 +18,9 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-
-  width: 50%;
+  border-radius: 40px;
+  width: 100%;
+  background: linear-gradient(to bottom, #f9be0d, #fad720);
 }
 
 .createQuizContainer .part {
@@ -39,11 +42,12 @@
 }
 
 .smallInputContainer {
-  width: 100%;
   padding: 0.5rem 1rem;
   margin: 0.3rem 0;
   border-radius: 0.75rem;
   background-color: white;
+
+  font-size: 0.8rem;
 
   box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
 }
@@ -53,6 +57,8 @@
   width: 80%;
   border-radius: 0.75rem;
   padding: 1rem;
+
+  font-size: 0.8rem;
 
   box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
   background-color: white;

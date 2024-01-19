@@ -91,6 +91,10 @@ export default function CreateQuiz() {
 
   return (
     <div className={styles.container}>
+      <Link href="/" className={styles.logo}>
+        <Image src="/logo.png" alt="logo" width={150} height={200} />
+      </Link>
+
       <div className={styles.createQuizContainer}>
         <h1>クイズを作成</h1>
 
@@ -161,7 +165,7 @@ export default function CreateQuiz() {
               </label>
             </div>
           ) : (
-            <>
+            <div className={styles.part}>
               <p>選択肢の作成と正解を選ぼう</p>
               <label>
                 <input
@@ -177,6 +181,7 @@ export default function CreateQuiz() {
                   name="choise1"
                   onChange={handleChoice1Change}
                   className={styles.smallInputContainer}
+                  placeholder="テキストを入力"
                 />
               </label>
               <br />
@@ -194,6 +199,7 @@ export default function CreateQuiz() {
                   name="choice2"
                   onChange={handleChoice2Change}
                   className={styles.smallInputContainer}
+                  placeholder="テキストを入力"
                 />
               </label>
               <br />
@@ -211,9 +217,10 @@ export default function CreateQuiz() {
                   name="choice3"
                   onChange={handleChoice3Change}
                   className={styles.smallInputContainer}
+                  placeholder="テキストを入力"
                 />
               </label>
-            </>
+            </div>
           )}
 
           <div className={styles.part}>

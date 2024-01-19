@@ -5,13 +5,9 @@ import Link from 'next/link'
 const MainVisual: React.FC = () => {
   return (
     <div className={styles.container}>
-      <Image
-        src="/logo.png"
-        alt="logo"
-        width={150}
-        height={200}
-        className={styles.logo}
-      />
+      <Link href="/" className={styles.logo}>
+        <Image src="/logo.png" alt="logo" width={150} height={200} />
+      </Link>
 
       <div className={styles.mainVisualContainer}>
         <div className={styles.leftContainer}>
