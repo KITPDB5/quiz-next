@@ -91,125 +91,147 @@ export default function CreateQuiz() {
 
   return (
     <div className={styles.container}>
-      <p>create quiz</p>
+      <div className={styles.createQuizContainer}>
+        <h1>クイズを作成</h1>
 
-      <div className="part">
-        <p>1. 問題文を作成</p>
-        <input type="text" onChange={handleQuestionChange} />
-      </div>
-
-      <div className="part">
-        <p>2. 回答形式を選択</p>
-        <label>
-          <input
-            type="radio"
-            name="answer_format"
-            value="trueOrFalse"
-            checked={answerFormat === 'trueOrFalse'}
-            onChange={event => {
-              handleAnswerFormatChange(event)
-              setAnswer(true)
-            }}
+        <div className={styles.part}>
+          <h1>1. 問題文を作成</h1>
+          <textarea
+            type="text"
+            onChange={handleQuestionChange}
+            className={styles.inputContainer}
+            placeholder="テキストを入力"
           />
-          ○×形式
-        </label>
-        <label>
-          <input
-            type="radio"
-            name="answer_format"
-            value="threeQuestions"
-            checked={answerFormat === 'threeQuestions'}
-            onChange={event => {
-              handleAnswerFormatChange(event)
-              setAnswer('A')
-            }}
-          />
-          ３択形式
-        </label>
-      </div>
+        </div>
 
-      <div className="part">
-        <p>3. 解答を作成</p>
-        {answerFormat === 'trueOrFalse' ? (
-          <div>
-            <p>正解は</p>
-            <label>
-              <input
-                type="radio"
-                name="answer"
-                value="true"
-                checked={answer === true}
-                onChange={handleAnswerChange}
-              />
-              ○
-            </label>
-            <label>
-              <input
-                type="radio"
-                name="answer"
-                value="false"
-                checked={answer === false}
-                onChange={handleAnswerChange}
-              />
-              ×
-            </label>
-          </div>
-        ) : (
-          <div>
-            <p>選択肢の作成と正解を選ぼう</p>
-            <label>
-              <input
-                type="radio"
-                name="answer"
-                value="A"
-                checked={answer === 'A'}
-                onChange={handleAnswerChange}
-              />
-              A.{' '}
-              <input
-                type="text"
-                name="choise1"
-                onChange={handleChoice1Change}
-              />
-            </label>
-            <label>
-              <input
-                type="radio"
-                name="answer"
-                value="B"
-                checked={answer === 'B'}
-                onChange={handleAnswerChange}
-              />
-              B.{' '}
-              <input
-                type="text"
-                name="choice2"
-                onChange={handleChoice2Change}
-              />
-            </label>
-            <label>
-              <input
-                type="radio"
-                name="answer"
-                value="C"
-                checked={answer === 'C'}
-                onChange={handleAnswerChange}
-              />
-              C.{' '}
-              <input
-                type="text"
-                name="choice3"
-                onChange={handleChoice3Change}
-              />
-            </label>
-          </div>
-        )}
-        <p>4. 解説文を作成</p>
-        <input type="text" onChange={handleDescChange} />
-      </div>
+        <div className={styles.part}>
+          <h1>2. 回答形式を選択</h1>
+          <label>
+            <input
+              type="radio"
+              name="answer_format"
+              value="trueOrFalse"
+              checked={answerFormat === 'trueOrFalse'}
+              onChange={event => {
+                handleAnswerFormatChange(event)
+                setAnswer(true)
+              }}
+            />
+            ○×形式
+          </label>
+          <label>
+            <input
+              type="radio"
+              name="answer_format"
+              value="threeQuestions"
+              checked={answerFormat === 'threeQuestions'}
+              onChange={event => {
+                handleAnswerFormatChange(event)
+                setAnswer('A')
+              }}
+            />
+            ３択形式
+          </label>
+        </div>
 
-      <div>
-        <button onClick={saveQuizToFirestore}>クイズを登録</button>
+        <div className={styles.part}>
+          <h1>3. 解答を作成</h1>
+          {answerFormat === 'trueOrFalse' ? (
+            <div>
+              <p>正解は</p>
+              <label>
+                <input
+                  type="radio"
+                  name="answer"
+                  value="true"
+                  checked={answer === true}
+                  onChange={handleAnswerChange}
+                />
+                ○
+              </label>
+              <label>
+                <input
+                  type="radio"
+                  name="answer"
+                  value="false"
+                  checked={answer === false}
+                  onChange={handleAnswerChange}
+                />
+                ×
+              </label>
+            </div>
+          ) : (
+            <>
+              <p>選択肢の作成と正解を選ぼう</p>
+              <label>
+                <input
+                  type="radio"
+                  name="answer"
+                  value="A"
+                  checked={answer === 'A'}
+                  onChange={handleAnswerChange}
+                />
+                A.{' '}
+                <input
+                  type="text"
+                  name="choise1"
+                  onChange={handleChoice1Change}
+                  className={styles.smallInputContainer}
+                />
+              </label>
+              <br />
+              <label>
+                <input
+                  type="radio"
+                  name="answer"
+                  value="B"
+                  checked={answer === 'B'}
+                  onChange={handleAnswerChange}
+                />
+                B.{' '}
+                <input
+                  type="text"
+                  name="choice2"
+                  onChange={handleChoice2Change}
+                  className={styles.smallInputContainer}
+                />
+              </label>
+              <br />
+              <label>
+                <input
+                  type="radio"
+                  name="answer"
+                  value="C"
+                  checked={answer === 'C'}
+                  onChange={handleAnswerChange}
+                />
+                C.{' '}
+                <input
+                  type="text"
+                  name="choice3"
+                  onChange={handleChoice3Change}
+                  className={styles.smallInputContainer}
+                />
+              </label>
+            </>
+          )}
+
+          <div className={styles.part}>
+            <h1>4. 解説文を作成</h1>
+            <textarea
+              type="text"
+              onChange={handleDescChange}
+              className={styles.inputContainer}
+              placeholder="テキストを入力"
+            />
+          </div>
+        </div>
+
+        <div>
+          <button onClick={saveQuizToFirestore} className={styles.button}>
+            クイズを登録する
+          </button>
+        </div>
       </div>
 
       {savedQuiz && (
@@ -253,7 +275,9 @@ export default function CreateQuiz() {
           <a href="/quiz" className={styles.button}>
             もう一問作成する
           </a>
-          <Link href="/" className={styles.linkText}>トップにもどる</Link>
+          <Link href="/" className={styles.linkText}>
+            トップにもどる
+          </Link>
         </div>
       )}
     </div>
