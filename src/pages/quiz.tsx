@@ -13,7 +13,7 @@ export default function CreateQuiz() {
   const [choice3, setChoice3] = useState('')
 
   const [savedQuiz, setSavedQuiz] = useState<QuizData | null>(null)
-  const [showMessage, setShowMessage] = useState(false)
+  // const [showMessage, setShowMessage] = useState(false)
 
   const handleQuestionChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setQuestion(event.target.value)
@@ -49,14 +49,14 @@ export default function CreateQuiz() {
   }
 
   type QuizData = {
-    answerFormat: string;
-    difficulty: string;
-    question: string;
-    answerChoices: boolean[] | string[];
-    answer: string | boolean;
-    description: string;
-    totalAttempts: number;
-    correctAttempts: number;
+    answerFormat: string
+    difficulty: string
+    question: string
+    answerChoices: boolean[] | string[]
+    answer: string | boolean
+    description: string
+    totalAttempts: number
+    correctAttempts: number
   }
 
   const saveQuizToFirestore = async () => {
@@ -67,27 +67,25 @@ export default function CreateQuiz() {
           ? [true, false]
           : [choice1, choice2, choice3]
 
-    const quizData = {
-      answerFormat: answerFormat,
-      difficulty: 'Beginner',
-      question: question,
-      answerChoices: answerChoicesToSave,
-      answer: answer,
-      description: desc,
-      totalAttempts: 0,
-      correctAttempts: 0,
-    }
+      const quizData = {
+        answerFormat: answerFormat,
+        difficulty: 'Beginner',
+        question: question,
+        answerChoices: answerChoicesToSave,
+        answer: answer,
+        description: desc,
+        totalAttempts: 0,
+        correctAttempts: 0,
+      }
 
-    const docRef = await addDoc(collection(db, 'quizzes'), quizData)
-    console.log('Document written with ID: ', docRef.id)
+      const docRef = await addDoc(collection(db, 'quizzes'), quizData)
+      console.log('Document written with ID: ', docRef.id)
 
-    setSavedQuiz(quizData)
+      setSavedQuiz(quizData)
     } catch (e) {
       console.error('Error adding document to Firestore: ', e)
     }
-    // データ保存成功時にメッセージ表示用のstateを更新
-      setShowMessage(true)
-    }
+  }
 
   return (
     <div className={styles.container}>
@@ -213,9 +211,49 @@ export default function CreateQuiz() {
       </div>
 
       {savedQuiz && (
-    <div style={{ position: 'fixed', top: '50%', left: '50%', transform: 'translate(-50%, -50%)' }}>
-      <p>クイズを登録しました！</p>
-      <pre>{JSON.stringify(savedQuiz, null, 2)}</pre>
+        <div
+          style={{
+            position: 'fixed',
+            top: '50%',
+            left: '50%',
+            transform: 'translate(-50%, -50%)',
+            background: 'white',
+          }}
+        >
+          <p>クイズを登録しました！</p>
+          <p>問題: {savedQuiz.question}</p>
+          <p>
+            回答形式:{' '}
+            {savedQuiz.answerFormat === 'trueOrFalse'
+              ? '○×形式'
+              : savedQuiz.answerFormat === 'threeQuestions'
+                ? '3択形式'
+                : savedQuiz.answerFormat}
+          </p>
+          <p>
+            選択肢:{' '}
+            {savedQuiz.answerChoices.length === 3
+              ? savedQuiz.answerChoices
+                  .map((choice, index) => {
+                    const prefix = ['A', 'B', 'C'][index]
+                    return `${prefix}: ${choice}`
+                  })
+                  .join(', ')
+              : savedQuiz.answerChoices
+                  .map(choice =>
+                    typeof choice === 'boolean' ? (choice ? '○' : '×') : choice,
+                  )
+                  .join(', ')}
+          </p>
+          <p>
+            解答:{' '}
+            {typeof savedQuiz.answer === 'boolean'
+              ? savedQuiz.answer
+                ? '○'
+                : '×'
+              : savedQuiz.answer}
+          </p>
+          <p>解説: {savedQuiz.description}</p>
         </div>
       )}
     </div>
